@@ -1,3 +1,28 @@
+    <script>
+        window.onload=function() {
+        var pathname = new URL(window.location.href).pathname
+        var links = document.getElementsByTagName('a')
+        var pageNavMap = new Map()
+        pageNavMap.set('Home', ['/', 'index', 'home'])
+        pageNavMap.set('Classes', ['courses'])
+        pageNavMap.set('Register', ['register'])
+        pageNavMap.set('Login', ['login'])
+
+        for(let [key, value] of pageNavMap) {
+            for(let i = 0; i < value.length; i++) {
+                if(pathname.search(value[i]) != -1) {
+                    for(let j = 0; j < links.length; j++) {
+                        if(links[j].text == key) {
+                            links[j].setAttribute("class", "nav-link active")
+                        } else {
+                            links[j].setAttribute("class", "nav-link")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    </script>
     <header>
         <nav>
             <ul class="nav nav-pills">
